@@ -13,14 +13,12 @@ def print_table_details(cursor_object, message):
 #to check data base opening
 connection_object = psycopg2.connect(database="test", user="postgres", password="123", host="127.0.0.1", port="5432")
 print("Opened the database successfully")
-
 cursor_object = connection_object.cursor()
-print_table_details(cursor_object, "table details before DELETION")
-
 #to UPDATE table records
-cursor_object.execute("DELETE FROM COMPANY WHERE ID = 2;")
+cursor_object.execute("CREATE TABLE DEPARTMENTS(id INTEGER PRIMARY KEY NOT NULL,department TEXT NOT NULL,employee_id INTEGER NOT NULL);")
 connection_object.commit()
-
-print_table_details(cursor_object, "table details after DELETION")
+print("Table created successfully")
+cursor_object.execute("INSERT INTO DEPARTMENTS (id, department, employee_id) VALUES (1, 'IT Billing', 1 ),(2, 'Engineering', 2 ),(3, 'Finance', 7 );")
+connection_object.commit()
 connection_object.close()
 print("Table records updated and displayed Successfully")
