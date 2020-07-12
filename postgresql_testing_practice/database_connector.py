@@ -11,6 +11,6 @@ def print_table_details(cursor_object):
 connection_object = psycopg2.connect(database="test", user="postgres", password="123", host="127.0.0.1", port="5432")
 print("Opened the database successfully")
 cursor_object = connection_object.cursor()
-cursor_object.execute("SELECT EMPLOYEE_ID, NAME, DEPARTMENT FROM COMPANY CROSS JOIN DEPARTMENTS;")
+cursor_object.execute("SELECT EMPLOYEE_ID, NAME, DEPARTMENT FROM COMPANY FULL OUTER JOIN DEPARTMENTS ON COMPANY.ID = DEPARTMENTS.EMPLOYEE_ID;")
 print_table_details(cursor_object)
 connection_object.close()
