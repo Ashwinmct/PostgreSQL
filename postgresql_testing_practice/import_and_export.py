@@ -19,4 +19,4 @@ output_file_data = "COPY ({0}) TO STDOUT WITH CSV HEADER".format("SELECT * FROM 
 with open('C:\\Users\VIGNESH\\PycharmProjects\\PostgreSQL\\postgresql_testing_practice\\resourse\\workers.csv', 'w') as output_file:
 	cursor_object.copy_expert(output_file_data, output_file)
 
-
+connection_object.close()
